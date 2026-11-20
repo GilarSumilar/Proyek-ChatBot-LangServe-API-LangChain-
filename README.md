@@ -1,6 +1,6 @@
-# Proyek ChatBot & LangServe API (LangChain)
+# Proyek ChatBot, LangServe API & RAG (LangChain)
 
-Proyek ini berisi implementasi chatbot berbasis **LangChain**, menggunakan model lokal (**Ollama Llama 3.2**) dan cloud (**Google Gemini**), serta penyediaan backend API menggunakan **FastAPI & LangServe** dengan antarmuka **Streamlit**.
+Proyek ini berisi implementasi chatbot berbasis **LangChain** menggunakan model lokal (**Ollama Llama 3.2**) dan cloud (**Google Gemini**), backend API menggunakan **FastAPI & LangServe**, antarmuka **Streamlit**, serta contoh **Retrieval-Augmented Generation (RAG)** dengan PDF dan Chroma.
 
 ---
 
@@ -9,13 +9,17 @@ Proyek ini berisi implementasi chatbot berbasis **LangChain**, menggunakan model
 ```text
 Buat ChatBot/
 ├── api/
-│   ├── app.py          # FastAPI backend server dengan rute LangServe (/essay & /poem)
+│   ├── app.py          # FastAPI backend server dengan rute LangServe (/gemini & /ollama)
 │   ├── client.py       # Streamlit client untuk berinteraksi dengan LangServe API
 │   └── cline.py        # Salinan client streamlit
 ├── chatbot/
 │   ├── app.py          # Antarmuka chatbot Streamlit langsung dengan Google Gemini
 │   ├── localama.py     # Antarmuka chatbot Streamlit langsung dengan Ollama (Llama 3.2)
 │   └── requirements.txt
+├── rag/
+│   ├── simplerag.ipynb  # Contoh load, split, embedding, dan pencarian dokumen
+│   ├── CV-Gilar_Sumilar.pdf
+│   └── speech.txt
 ├── .env                # File konfigurasi API Key (Google, LangChain)
 ├── requirements.txt    # Daftar dependensi lengkap proyek
 └── README.md           # Petunjuk penggunaan proyek
@@ -57,6 +61,8 @@ Buat atau sesuaikan file `.env` di folder root proyek dengan isi:
 GOOGLE_API_KEY=your_google_api_key_here
 LANGCHAIN_API_KEY=your_langchain_api_key_here
 ```
+
+> Jangan menaruh API key langsung di source code atau commit file `.env` ke Git.
 
 ---
 
@@ -101,8 +107,8 @@ py api\app.py
 
 - Server API aktif di: `http://localhost:8000`
 - Swagger UI / Dokumentasi API: `http://localhost:8000/docs`
-- LangServe Playground Ollama: `http://localhost:8000/poem/playground/`
-- LangServe Playground Gemini: `http://localhost:8000/essay/playground/`
+- LangServe Playground Ollama: `http://localhost:8000/ollama/playground/`
+- LangServe Playground Gemini: `http://localhost:8000/gemini/playground/`
 
 ---
 
@@ -118,6 +124,33 @@ Aplikasi client akan terhubung ke backend FastAPI di port `8000`.
 
 ---
 
+## 🔎 Menjalankan Contoh RAG
+
+Contoh RAG tersedia di [rag/simplerag.ipynb](rag/simplerag.ipynb). Notebook ini mendemonstrasikan:
+
+- Memuat teks dari `speech.txt`.
+- Memuat dokumen PDF menggunakan `PyPDFLoader`.
+- Memuat konten web menggunakan `WebBaseLoader`.
+- Memecah dokumen menjadi chunk berukuran 1000 karakter dengan overlap 200 karakter.
+- Membuat embedding menggunakan Google Gemini.
+- Menyimpan dan mencari dokumen dengan Chroma.
+- Mengambil konteks paling relevan dan menghasilkan jawaban melalui model chat Gemini.
+
+Pastikan file `.env` berisi `GOOGLE_API_KEY`, kemudian jalankan notebook:
+
+```powershell
+cd rag
+py -m jupyter notebook simplerag.ipynb
+```
+
+Jalankan cell notebook dari atas ke bawah. Menjalankan Jupyter dari folder `rag/` membuat file `speech.txt` dan `CV-Gilar_Sumilar.pdf` dapat ditemukan relatif terhadap notebook.
+
+Contoh query pada notebook:
+
+```python
+query = "Apa saja pengalaman kerja Gilar Sumilar?"
+```
+
 ## 📦 Paket Utama yang Digunakan
 
 - **langchain** & **langchain-core**
@@ -126,4 +159,9 @@ Aplikasi client akan terhubung ke backend FastAPI di port `8000`.
 - **streamlit**
 - **langchain-ollama**
 - **langchain-google-genai**
+- **langchain-community**
+- **langchain-text-splitters**
+- **ChromaDB**
+- **PyPDF**
+- **Beautiful Soup**
 - **python-dotenv**

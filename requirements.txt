@@ -10,3 +10,8 @@ langchain-ollama
 streamlit
 python-dotenv
 requests
+langchain-text-splitters
+chromadb
+pypdf
+beautifulsoup4
+jupyter
