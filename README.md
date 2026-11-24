@@ -1,6 +1,6 @@
 # Proyek ChatBot, LangServe API & RAG (LangChain)
 
-Proyek ini berisi implementasi chatbot berbasis **LangChain** menggunakan model lokal (**Ollama Llama 3.2**) dan cloud (**Google Gemini**), backend API menggunakan **FastAPI & LangServe**, antarmuka **Streamlit**, serta contoh **Retrieval-Augmented Generation (RAG)** dengan PDF dan Chroma.
+Proyek ini berisi implementasi chatbot berbasis **LangChain** menggunakan model lokal (**Ollama Llama 3.2**) dan cloud (**Google Gemini**), backend API menggunakan **FastAPI & LangServe**, antarmuka **Streamlit**, serta contoh **Retrieval-Augmented Generation (RAG)** dengan PDF dan FAISS.
 
 ---
 
@@ -133,8 +133,8 @@ Contoh RAG tersedia di [rag/simplerag.ipynb](rag/simplerag.ipynb). Notebook ini 
 - Memuat konten web menggunakan `WebBaseLoader`.
 - Memecah dokumen menjadi chunk berukuran 1000 karakter dengan overlap 200 karakter.
 - Membuat embedding menggunakan Google Gemini.
-- Menyimpan dan mencari dokumen dengan Chroma.
-- Mengambil konteks paling relevan dan menghasilkan jawaban melalui model chat Gemini.
+- Menyimpan dan mencari dokumen dengan FAISS.
+- Mengambil konteks melalui Retriever, memprosesnya dengan Document Chain, dan menghasilkan jawaban melalui model chat Gemini.
 
 Pastikan file `.env` berisi `GOOGLE_API_KEY`, kemudian jalankan notebook:
 
@@ -161,7 +161,7 @@ query = "Apa saja pengalaman kerja Gilar Sumilar?"
 - **langchain-google-genai**
 - **langchain-community**
 - **langchain-text-splitters**
-- **ChromaDB**
+- **FAISS**
 - **PyPDF**
 - **Beautiful Soup**
 - **python-dotenv**
