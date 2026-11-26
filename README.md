@@ -4,7 +4,7 @@ Proyek ini berisi implementasi chatbot berbasis **LangChain** menggunakan model 
 
 ---
 
-## 📁 Struktur Direktori
+## Struktur Direktori
 
 ```text
 Buat ChatBot/
@@ -43,7 +43,7 @@ Buat ChatBot/
 
 ---
 
-## ⚙️ Instalasi & Konfigurasi
+## Instalasi & Konfigurasi
 
 ### 1. Instal Dependensi
 
@@ -66,7 +66,7 @@ LANGCHAIN_API_KEY=your_langchain_api_key_here
 
 ---
 
-## 🚀 Cara Menjalankan Aplikasi
+## Cara Menjalankan Aplikasi
 
 ### Opsi 1: Chatbot Lokal Ollama (Streamlit Langsung)
 
@@ -124,7 +124,7 @@ Aplikasi client akan terhubung ke backend FastAPI di port `8000`.
 
 ---
 
-## 🔎 Menjalankan Contoh RAG
+## Menjalankan Contoh RAG
 
 Contoh RAG tersedia di [rag/simplerag.ipynb](rag/simplerag.ipynb). Notebook ini mendemonstrasikan:
 
@@ -151,7 +151,7 @@ Contoh query pada notebook:
 query = "Apa saja pengalaman kerja Gilar Sumilar?"
 ```
 
-## 📦 Paket Utama yang Digunakan
+## Paket Utama yang Digunakan
 
 - **langchain** & **langchain-core**
 - **langserve[all]** & **sse-starlette**
