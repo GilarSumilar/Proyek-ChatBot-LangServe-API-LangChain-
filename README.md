@@ -20,6 +20,8 @@ Buat ChatBot/
 │   ├── simplerag.ipynb  # Contoh load, split, embedding, dan pencarian dokumen
 │   ├── CV-Gilar_Sumilar.pdf
 │   └── speech.txt
+├── agents/
+│   └── agents.ipynb     # Assistant dengan routing Wikipedia, Arxiv, dan LangSmith
 ├── .env                # File konfigurasi API Key (Google, LangChain)
 ├── requirements.txt    # Daftar dependensi lengkap proyek
 └── README.md           # Petunjuk penggunaan proyek
@@ -151,6 +153,22 @@ Contoh query pada notebook:
 query = "Apa saja pengalaman kerja Gilar Sumilar?"
 ```
 
+## 🤖 Menjalankan Knowledge-source Assistant
+
+Notebook [agents/agents.ipynb](agents/agents.ipynb) memilih sumber berdasarkan pertanyaan:
+
+- Wikipedia untuk pengetahuan umum.
+- Arxiv untuk paper dan topik ilmiah.
+- Retriever FAISS dari dokumentasi resmi LangSmith untuk pertanyaan khusus LangSmith.
+
+Jawaban dibuat hanya dari hasil pencarian dan menampilkan referensi. Notebook memerlukan `GOOGLE_API_KEY` untuk routing, pembuatan jawaban, dan embedding dokumentasi; akses internet dibutuhkan untuk sumber-sumber tersebut.
+
+Jalankan dari direktori utama proyek:
+
+```powershell
+py -m jupyter notebook agents\agents.ipynb
+```
+
 ## Paket Utama yang Digunakan
 
 - **langchain** & **langchain-core**
@@ -164,4 +182,5 @@ query = "Apa saja pengalaman kerja Gilar Sumilar?"
 - **FAISS**
 - **PyPDF**
 - **Beautiful Soup**
+- **Wikipedia** & **Arxiv**
 - **python-dotenv**
