@@ -18,7 +18,7 @@ Buat ChatBot/
 │   └── requirements.txt
 ├── rag/
 │   ├── simplerag.ipynb  # Contoh load, split, embedding, dan pencarian dokumen
-│   ├── CV-Gilar_Sumilar.pdf
+│   ├──  CV-Gilar_Sumilar.pdf
 │   └── speech.txt
 ├── agents/
 │   └── agents.ipynb     # Assistant dengan routing Wikipedia, Arxiv, dan LangSmith
@@ -29,7 +29,7 @@ Buat ChatBot/
 
 ---
 
-## 🛠️ Prasyarat Sistem
+## Prasyarat Sistem
 
 1. **Python 3.10+** (sudah diuji pada Python 3.14).
 2. **Ollama**:
